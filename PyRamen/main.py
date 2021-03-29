@@ -35,20 +35,17 @@ for sale in sales_data:
                               "03-cogs": 0,
                               "04-profit": 0}
     menu = menu_data[sales_item]
-    if(menu_data['spicy miso ramen']):
-        if menu != None:
-            cost = float(menu[3])
-            price = float(menu[2])
-            profit = price - cost
+    if not menu == None:
+        cost = float(menu[3])
+        price = float(menu[2])
+        profit = price - cost
 
-            report[sales_item]["01-count"] += quantity
-            report[sales_item]["02-revenue"] += price * quantity
-            report[sales_item]["03-cogs"] += cost * quantity
-            report[sales_item]["04-profit"] += profit * quantity
-        else:
-            print(f'{sales_item} does not contains data')
+        report[sales_item]["01-count"] += quantity
+        report[sales_item]["02-revenue"] += price * quantity
+        report[sales_item]["03-cogs"] += cost * quantity
+        report[sales_item]["04-profit"] += profit * quantity
     else:
-        continue
+        print(f'{sales_item} does not contains data')
 
 with open(output_file, "w") as file:
     for sales_item in report:
